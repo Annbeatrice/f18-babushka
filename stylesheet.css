@@ -1,0 +1,69 @@
+header{
+    border: solid 1px grey;
+    max-width: 1024px;
+    margin: 0 auto;
+    
+    
+}
+
+.head{
+    margin: 0 auto;
+}
+
+header h1{
+    text-align: center;
+    font-family: "raleway", sans-serif;
+}
+
+
+
+
+.templatemodtager{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-auto-rows: auto;
+            grid-gap: 5px;
+            margin: 0 auto;
+        }
+        
+        .ret{
+            display: grid;
+            min-height: 150px;
+            
+        }
+        
+        .ret:nth-child(even){
+            background: lightgrey;
+        }
+        .ret:nth-child(odd){
+            background: lightblue;
+        }
+    
+h1{
+   
+    font-family: "raleway", sans-serif; 
+}
+
+p{
+    font-family: "raleway", sans-serif;
+}
+
+
+.navn{
+    border: solid 1px black;
+    
+}
+.billede{
+    grid-row: 1;
+}
+
+.beskrivelse{
+    border: solid 1px black;
+
+}
+.pris{
+   
+    border: solid 1px black;
+
+}
+

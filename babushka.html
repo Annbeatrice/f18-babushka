@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <title></title>
+    <link rel="stylesheet" href="stylesheet.css">
+    
+</head>
+
+<body>
+   <header>
+    <h1>
+   Bistro Babushka
+   </h1>
+   
+   
+   </header>
+   
+   
+   <div class="templatemodtager"></div>
+    
+     
+     
+     
+    <template class="mytemplate">
+      
+      <div class="ret">
+       
+       <h1 class="navn"></h1>
+       <img src="" alt="" class="billede">
+       <p class="beskrivelse"></p>
+       <p class="pris"></p>
+       
+       </div>
+       
+    </template>
+   
+       
+           
+               
+                   
+                       
+                           
+    <script>
+    
+        let retter;
+        
+        document.addEventListener("DOMContentLoaded", loadJson);
+        
+        
+        let modtager = document.querySelector(".templatemodtager");
+        let template = document.querySelector(".mytemplate");
+        
+        async function loadJson(){
+        let minListe = await fetch("menu.json");
+            retter = await minListe.json();
+            console.log(retter);
+            
+        visMenu(retter);
+            
+        }
+        
+        
+        
+    function visMenu(retter) {
+        console.log(template);
+        
+        retter.forEach( hverRet =>{
+            let klon = template.cloneNode(true).content;
+            console.log(klon);
+            klon.querySelector(".navn").textContent = hverRet.navn;
+            klon.querySelector(".billede").src = "imgs/small/"+hverRet.billede+"-sm.jpg";
+            klon.querySelector(".beskrivelse").textContent = hverRet.kortbeskrivelse;
+            klon.querySelector(".pris").textContent = hverRet.pris;
+            modtager.appendChild(klon);
+            
+        })    
+        
+        }
+    
+    
+    </script>
+    
+   <footer></footer>
+</body>
+</html>
