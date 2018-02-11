@@ -1,15 +1,66 @@
+.popup{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.48);
+    visibility: hidden;
+}
+
+.popup-content{
+    background: #fff;
+    width: 40vw;
+    position: absolute;
+    top: 10vh;
+    left: 30vw;   
+}
+
+.button{
+/*
+    position: absolute;
+    top: 12vh;
+    left: 65vw;
+*/
+    z-index: 1;
+}
 
 
 .templatemodtager{
-        display: grid;
-        grid-template-columns: (3,1fr);
-        grid-gap: 10px;
-
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+            grid-template-rows: repeat(4,1fr);
+            grid-gap: 10px;
+            max-width: 1024px;
+            margin: 0 auto;
         }
+
+@media screen and (min-width: 768px) and (max-width: 1024px){
+    
+    .templatemodtager{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 10px;
+        max-width: 1024px;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 1025px){
+    .templatemodtager{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 10px;
+        
+    }
+}
         
 .ret{
+
+            border: 1px solid #000;
+            min-height: 150px;
+    
     
         }
+
     
 h1{
    
@@ -26,13 +77,21 @@ p{
 
 
 .billede{
-            grid-row: 1;
+    
+        width: 100%;
+    
+
 }
 
 .beskrivelse{
+    
 
 }
 .pris{
-   
+    
+}
+
+footer{
+    border: solid 1px black;
 
 }

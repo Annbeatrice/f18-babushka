@@ -1,7 +1,8 @@
         let retter;
         async function loadJson(){
-            //hentjson
+            //hent jsonfil
         let minListe = await fetch("menu.json");
+            //
             retter = await minListe.json();
         // console.log(retter);
             
@@ -32,8 +33,6 @@
             
         }
         
-        
-        
     function visMenu(retter, overskrift) {
         document.querySelector("[data-overskrift]").textContent = overskrift;
         //console.log(template);
@@ -48,10 +47,51 @@
             klon.querySelector("[data-billede]").src = "imgs/small/"+hverRet.billede+"-sm.jpg";
             klon.querySelector("[data-beskrivelse]").textContent = hverRet.kortbeskrivelse;
             klon.querySelector("[data-pris]").textContent = hverRet.pris;
-            modtager.appendChild(klon);
+            klon.querySelector("[data-ret]").setAttribute("data-id", hverRet.id);
+            klon.querySelector("[data-ret]").addEventListener("click", showSingle);
             
+            modtager.appendChild(klon);
         })
         
         }
-    
+
+
+    function showSingle(){
+        console.log("test");
+        let myId = this.getAttribute("data-id");
+        console.log(myId);
+        let single = retter.find( ret =>{
+            //hvis myId og ret id matcher skal indhold vises
+            if(myId == ret.id){
+                document.querySelector(".popup").style.visibility = "visible";
+                document.querySelector("[data-titel]").textContent = ret.navn;
+                document.querySelector("[data-langbeskrivelse]").textContent = ret.langbeskrivelse;
+                document.querySelector("[data-billede]").src = "imgs/medium/"+ret.billede+"-md.jpg";
+                
+            }
+            
+        }
+                                )
+        
+    }
+// Knapp och popup i variabler
+button = document.querySelector("[data-button]");
+popup = document.querySelector("[data-popup]");
+
+// Click eventlistner til hide
+button.addEventListener("click", hideSingle);
+popup.addEventListener("click", hideSingle);
+
+
+function hideSingle(klick){
+    console.log(klick)
+    // Endast om det button eller popup der bliver klickat på skal denna function ske. 
+    if( button === klick.target || popup === klick.target ){
+        //hvis man klikker på denne skal popup forsvinne
+        document.querySelector(".popup").style.visibility = "hidden";
+        console.log("hidden");
+        
+    }
+}
+
 document.addEventListener("DOMContentLoaded", loadJson);
